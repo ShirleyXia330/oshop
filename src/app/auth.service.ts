@@ -26,7 +26,7 @@ export class AuthService {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
 
-  logoout() {
+  logout() {
     this.afAuth.auth.signOut();
   }
 
