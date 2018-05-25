@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { AppUser } from '../models/app-user';
 
 @Component({
   selector: 'bs-navbar',
@@ -7,8 +8,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent {
-  constructor(public auth: AuthService) { //why it should not be private???
+  appUser: AppUser;
+  constructor(private auth: AuthService) {
     // afAuth.authState.subscribe(user => { this.user = user });
+    auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
 
   logout() {
