@@ -9,13 +9,20 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private auth: AuthService, router: Router, private userService: UserService){
+  constructor(private auth: AuthService, router: Router, private userService: UserService) {
     auth.user$.subscribe(user => {
-      if(user){
+      if (user) {
         userService.save(user);
         let returnUrl = localStorage.getItem('returnUrl');
-        router.navigateByUrl(returnUrl);
+        console.log("returnUrl:",returnUrl);
+        if (returnUrl!='') {
+          router.navigateByUrl(returnUrl);
+          localStorage.setItem('returnUrl', '');
+        }
       }
     });
+    // auth.appUser$.subscribe(user => {
+    //   console.log("user: ",user);
+    // })
   }
 }
