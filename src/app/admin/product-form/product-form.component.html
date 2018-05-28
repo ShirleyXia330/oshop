@@ -3,7 +3,6 @@
     <form #form="ngForm" (ngSubmit)="save(form.value)">
       <div class="form-group">
         <label for="title">Title</label>
-        <span>{{ product.title }} 1</span>
         <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
         <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
           Title is required.
@@ -43,6 +42,7 @@
         </div>
       </div>
       <button class="btn btn-primary">Save</button>
+      <button class="btn btn-danger" type="button" (click)="delete()">Delete</button>
     </form>
   </div>
   <div class="col-md-6">
