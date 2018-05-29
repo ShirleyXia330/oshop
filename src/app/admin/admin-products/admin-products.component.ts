@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ProductService } from '../../product.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Product } from '../../models/product';
+import { DataTableResource } from 'angular5-data-table';
 
 @Component({
   selector: 'app-admin-products',
@@ -10,18 +11,38 @@ import { Product } from '../../models/product';
 })
 export class AdminProductsComponent implements OnDestroy {
   products: Product[];
-  filteredProducts: any[];
   subscription: Subscription;
+  tableResource: DataTableResource<Product>;
+  items: Product[] = [];
+  itemCount: number;
+
+  private initializeTable(products: Product[]){
+    this.tableResource = new DataTableResource(products);
+    this.tableResource.query({offset:0}).then(items => this.items = items);
+    this.tableResource.count().then(count => this.itemCount = count);
+  }
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
-      .subscribe(products => this.filteredProducts = this.products = products);
+      .subscribe(products => {
+        this.products = products;
+        this.initializeTable(products);
+      });
   }
 
   filter(query: string) {
-    this.filteredProducts = (query) ?
+    let filteredProducts = (query) ?
       this.products.filter(product => product.title.toLowerCase().includes(query.toLowerCase())) :
       this.products;
+
+    this.initializeTable(filteredProducts);
+  }
+
+  reloadItems(params){
+    if (!this.tableResource) return;
+
+    this.tableResource.query(params).then(items => this.items = items);
+
   }
 
   ngOnDestroy() {
