@@ -9,8 +9,9 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private auth: AuthService, router: Router, private userService: UserService){
+  constructor(private auth: AuthService, router: Router, private userService: UserService) {
     auth.user$.subscribe(user => {
+<<<<<<< HEAD
       if (!user) return;
       
       userService.save(user);
@@ -19,6 +20,20 @@ export class AppComponent {
 
       router.navigateByUrl(returnUrl);
       localStorage.removeItem('returnUrl');
+=======
+      if (user) {
+        userService.save(user);
+        let returnUrl = localStorage.getItem('returnUrl');
+        console.log("returnUrl:",returnUrl);
+        if (returnUrl!='') {
+          router.navigateByUrl(returnUrl);
+          localStorage.setItem('returnUrl', '');
+        }
+      }
+>>>>>>> Routing_Error
     });
+    // auth.appUser$.subscribe(user => {
+    //   console.log("user: ",user);
+    // })
   }
 }
