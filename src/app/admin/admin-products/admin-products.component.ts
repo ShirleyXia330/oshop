@@ -42,7 +42,6 @@ export class AdminProductsComponent implements OnDestroy {
     if (!this.tableResource) return;
 
     this.tableResource.query(params).then(items => this.items = items);
-
   }
 
   ngOnDestroy() {
