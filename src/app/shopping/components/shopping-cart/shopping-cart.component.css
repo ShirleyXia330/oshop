@@ -5,3 +5,8 @@
     border-radius: 100%;
     background-size: cover;
 }
+
+.card {
+    width: 80%;
+    margin-bottom: 80px;
+}
