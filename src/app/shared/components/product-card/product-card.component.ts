@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../models/product';
-import { ShoppingCartService } from '../shopping-cart.service';
+import { Product } from 'shared/models/product';
+import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { retry } from 'rxjs/operator/retry';
-import { ShoppingCart } from '../models/shopping-cart';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 
 @Component({
   selector: 'product-card',
