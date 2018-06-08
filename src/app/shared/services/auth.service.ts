@@ -19,11 +19,25 @@ export class AuthService {
     this.user$ = afAuth.authState; //This pipe will automatically unsubscribe from the Observable.
   }
 
-  login() {
+  googleLogin() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
 
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(function () {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('profile');
+        provider.addScope('email');
+        return firebase.auth().signInWithPopup(provider).then(function (result) {
+          var token = result.credential.accessToken;
+          var user = result.user;
+        });
+        // return firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+      })
+      .catch(function (error) {
+        var errorMessage = error.message;
+      });
+    // this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
 
   logout() {

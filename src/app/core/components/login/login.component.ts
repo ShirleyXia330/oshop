@@ -10,7 +10,7 @@ export class LoginComponent {
 
   constructor(private auth: AuthService) { }
 
-  login(){
-    this.auth.login();
+  googleLogin(){
+    this.auth.googleLogin();
   }
 }
