@@ -1,4 +1,50 @@
-
+<button class="close btn btn-primary" mat-dialog-close>
+  <span aria-hidden="true">&times;</span>
+</button>
+<h5 mat-dialog-title>Items Ordered</h5>
+<mat-dialog-content>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th class="text-center" style="width:230px">Quantity</th>
+        <th class="text-right" style="width:200px">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of order.items">
+        <td>
+          <div [style.backgroundImage]="'url(' + item.product.imageUrl + ')'" 
+            class="thumbnail">
+          </div>
+        </td>
+        <td> {{ item.product.title }} </td>
+        <td class="text-center"> {{ item.quantity }}</td>
+        <td class="text-right">
+          {{ item.totalPrice | currency:"AUD":"symbol" }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Total:</th>
+        <th></th>
+        <th></th>
+        <th class="text-right">
+          {{ order.totalPrice | currency:"AUD":"symbol" }}
+        </th>
+      </tr>
+      <tr>
+        <th>Shipping Address:</th>
+        <td colspan="3"> {{ order.shipping.addressLine1 }}, {{ order.shipping.addressLine2 }}, {{ order.shipping.city }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</mat-dialog-content>
+  <button class="btn btn-primary float-right" md-raised-button mat-dialog-close>
+    Close
+  </button>
 
 <!-- <button type="button" class="btn btn-primary" 
   data-toggle="modal" data-target="#orderModal">

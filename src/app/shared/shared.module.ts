@@ -17,9 +17,12 @@ import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
-// import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
+  entryComponents: [
+    OrderModalComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,7 +31,7 @@ import { UserService } from './services/user.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
-    // MatDialogModule
+    MatDialogModule
   ],
   declarations: [
     ProductCardComponent,
@@ -46,7 +49,7 @@ import { UserService } from './services/user.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot().ngModule,
-    // MatDialogModule
+    MatDialogModule
   ],
   providers: [
     AuthService,

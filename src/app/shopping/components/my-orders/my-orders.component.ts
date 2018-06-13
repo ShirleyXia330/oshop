@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { OrderModalComponent } from 'shared/components/order-modal/order-modal.component';
 import { AuthService } from 'shared/services/auth.service';
 import { OrderService } from 'shared/services/order.service';
-//declare var jquery:any;
-// declare var $ :any;
 
 @Component({
   selector: 'app-my-orders',
@@ -14,11 +14,12 @@ export class MyOrdersComponent {
 
   constructor(
     private authService: AuthService,
-    private orderService: OrderService) {
+    private orderService: OrderService,
+    private dialog: MatDialog) {
       this.order$ = authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
   }
 
-  // viewOrder(){
-  //   $('#exampleModal').modal('toggle');
-  // }
+  view(order) {
+    this.dialog.open(OrderModalComponent,{data: order});
+  }
 }

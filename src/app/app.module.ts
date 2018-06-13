@@ -14,14 +14,15 @@ import { CoreModule } from './core/core.module';
 import { ProductsComponent } from './shopping/components/products/products.component';
 import { ShoppingModule } from './shopping/shopping.module';
 
-// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     SharedModule,
     AdminModule,
     ShoppingModule,

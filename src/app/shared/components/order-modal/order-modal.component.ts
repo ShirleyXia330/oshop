@@ -1,24 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
 import { Order } from 'shared/models/order';
-// import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'order-modal',
   templateUrl: './order-modal.component.html',
   styleUrls: ['./order-modal.component.css']
 })
-export class OrderModalComponent implements OnInit {
-  @Input('order') order: Order;
+export class OrderModalComponent {
+  order: Order;
 
-  // constructor(public dialog: MatDialog) {
-  //   console.log("constructor: ", this.order);
-  // }
-
-  ngOnInit() {
-    console.log("ngOnInit: ", this.order);
-  }
-
-  view() {
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    this.order = data;
   }
 }
