@@ -12,7 +12,11 @@
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date }}</td>
       <td>
-        <a routerLink="">View</a>
+        <!-- <a routerLink="">View</a> -->
+        <button mat-raised-button (click)="view(OrderModalComponent)">
+            View
+        </button>
+        <order-modal [order]="order"></order-modal>
       </td>
     </tr>
   </tbody>

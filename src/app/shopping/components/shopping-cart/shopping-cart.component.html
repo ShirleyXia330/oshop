@@ -6,7 +6,7 @@
       <button *ngIf="cart.items.length" class="btn btn-light btn-sm float-right" (click)="clearCart()">Clear Shopping Cart</button>
     </p>
   </div>
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th></th>
@@ -34,7 +34,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <th></th>
+        <th>Total:</th>
         <th></th>
         <th></th>
         <th class="text-right">

@@ -6,6 +6,8 @@ import { DataTableModule } from 'angular5-data-table';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CustomFormsModule } from 'ng2-validation';
+
+import { OrderModalComponent } from './components/order-modal/order-modal.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { AuthGuard } from './services/auth-guard.service';
@@ -15,6 +17,7 @@ import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
+// import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -25,21 +28,25 @@ import { UserService } from './services/user.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
+    // MatDialogModule
   ],
   declarations: [
     ProductCardComponent,
     ProductQuantityComponent,
+    OrderModalComponent
   ],
   exports: [
     CommonModule,
     ProductCardComponent,
     ProductQuantityComponent,
+    OrderModalComponent,
     FormsModule,
     CustomFormsModule,
     DataTableModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot().ngModule,
+    // MatDialogModule
   ],
   providers: [
     AuthService,
