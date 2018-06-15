@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'shared/shared.module';
 
+import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
+import { EmailLoginComponent } from './components/email-login/email-login.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+
 @NgModule({
+  entryComponents: [
+    EmailLoginComponent
+  ],
   imports: [
     SharedModule,
     RouterModule.forChild([])
@@ -14,7 +18,8 @@ import { SharedModule } from 'shared/shared.module';
   declarations: [
     BsNavbarComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    EmailLoginComponent
   ],
   exports: [
     BsNavbarComponent

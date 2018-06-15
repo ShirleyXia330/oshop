@@ -1,0 +1,61 @@
+<button class="close btn btn-primary" mat-dialog-close>
+  <span aria-hidden="true">&times;</span>
+</button>
+<h4 mat-dialog-title *ngIf="hasAccount; else registerTitle">
+  Login with Email
+</h4>
+<ng-template #registerTitle>
+  <h4 mat-dialog-title>
+    Register an Account
+  </h4>
+</ng-template>
+
+<p *ngIf="formError" class="text-danger">
+  {{ formError }}
+</p>
+<p *ngIf="loginError.message" class="text-danger">
+  {{ loginError.message }}
+</p>
+
+<mat-dialog-content>
+  <form #form="ngForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input #emailControl="ngModel" [(ngModel)]="email" name="email" 
+          id="email" type="email" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="emailControl.touched && emailControl.invalid">
+          Email is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label> 
+        <input #passwordControl="ngModel" [(ngModel)]="password" name="password" 
+          id="password" type="password" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="passwordControl.touched && passwordControl.invalid">
+          Password is required.
+        </div>
+      </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button *ngIf="hasAccount; else registerButton" [disabled]="!form.valid" 
+    type="button" class="btn btn-primary" (click)="login()">
+    Login
+  </button>
+  <ng-template #registerButton>
+    <button [disabled]="!form.valid" 
+      type="button" class="btn btn-primary" (click)="register()">
+      Register
+    </button>
+  </ng-template> 
+</mat-dialog-actions>
+<mat-dialog-content>
+  <span *ngIf="hasAccount; else registerFooter" (click)="switch()">
+    Not have any Account yet? >> Register
+  </span>
+  <ng-template #registerFooter>
+    <span (click)="switch()">
+      Already have an Account? >> Log in
+    </span>
+  </ng-template>
+</mat-dialog-content>

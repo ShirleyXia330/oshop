@@ -1,0 +1,9 @@
+mat-dialog-actions {
+    padding-bottom: 30px
+}
+
+mat-dialog-content span {
+    cursor: pointer;
+    color: tomato;
+    text-decoration: underline;
+}
