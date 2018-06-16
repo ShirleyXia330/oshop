@@ -34,6 +34,11 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="title">Description</label>
+        <textarea #title="ngModel" [(ngModel)]="product.description" rows="5"
+          name="description" id="description" type="description" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
         <label for="imageUrl">Image Url</label>
         <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
         <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">

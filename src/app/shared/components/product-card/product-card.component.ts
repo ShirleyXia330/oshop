@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'shared/models/product';
-import { ShoppingCartService } from 'shared/services/shopping-cart.service';
-import { retry } from 'rxjs/operator/retry';
 import { ShoppingCart } from 'shared/models/shopping-cart';
+import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 
 @Component({
   selector: 'product-card',
@@ -13,6 +12,7 @@ export class ProductCardComponent {
   @Input('product') product: Product;
   @Input('show-actions') showActions = true;
   @Input('shopping-cart') shoppingCart: ShoppingCart;
+  @Input('view-product') viewProduct = false;
 
   constructor(private cartService: ShoppingCartService) { }
 

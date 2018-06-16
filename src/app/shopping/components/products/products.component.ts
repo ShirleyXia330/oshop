@@ -27,14 +27,13 @@ export class ProductsComponent implements OnInit {
 
   async ngOnInit() {
     this.cart$ = await this.shoppingCartService.getCart();
-    // .subscribe(cart => this.cart$ = cart);
     this.populateProducts();
   }
 
   private populateProducts() {
     this.productService.getAll()
       .switchMap(products => {
-        this.products = products;
+        this.products = products;        
         return this.route.queryParamMap;
       })
       .subscribe(params => {
@@ -47,8 +46,7 @@ export class ProductsComponent implements OnInit {
     this.filteredProducts = (this.category) ?
       this.products.filter(p => p.category === this.category) :
       this.products;
+      console.log(this.filteredProducts);
+
   }
-  // ngOnDestroy() {
-  //   this.subscription.unsubscribe();
-  // }
 }

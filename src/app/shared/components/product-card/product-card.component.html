@@ -1,16 +1,25 @@
 <div *ngIf="product.title" class="card">
-  <!-- <a *ngIf="ishomePage; else invalidLink" routerLink=""> -->
-    <img *ngIf="product.imageUrl" class="card-img-top" 
+    <!-- *ngIf="viewProduct; else invalidLink" -->
+  <a *ngIf="viewProduct; else invalidLink" [routerLink]="['/products/',product.$key]">
+      <img *ngIf="product.imageUrl" class="card-img-top" 
       [src]="product.imageUrl" alt="{{ product.title }}">
-  <!-- </a>
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.price | currency:'AUD':'symbol' }}</p>
+      </div>
+  </a>
   <ng-template #invalidLink>
       <img *ngIf="product.imageUrl" class="card-img-top" 
         [src]="product.imageUrl" alt="{{ product.title }}">
-  </ng-template> -->
-  <div class="card-body">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.price | currency:'AUD':'symbol' }}</p>
+      </div>
+  </ng-template>
+  <!-- <div class="card-body">
     <h5 class="card-title">{{ product.title }}</h5>
     <p class="card-text">{{ product.price | currency:'AUD':'symbol' }}</p>
-  </div>
+  </div> -->
   <div *ngIf="showActions && shoppingCart" class="card-footer">
     <button  *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
       (click)="addToCart()"class="btn btn-primary btn-block">
