@@ -18,6 +18,7 @@ import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginAuthGuard } from 'shared/services/login-auth-guard.service';
 
 @NgModule({
   entryComponents: [
@@ -54,6 +55,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   providers: [
     AuthService,
     AuthGuard,
+    LoginAuthGuard,
     UserService,
     CategoryService,
     ProductService,

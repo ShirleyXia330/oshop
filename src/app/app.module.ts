@@ -15,6 +15,7 @@ import { ProductsComponent } from './shopping/components/products/products.compo
 import { ShoppingModule } from './shopping/shopping.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginAuthGuard } from 'shared/services/login-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
-      { path: 'login', component: LoginComponent },
-
+      { path: 'login', component: LoginComponent,
+        canActivate: [LoginAuthGuard]},
       { path: '**', component: HomeComponent },
     ])
   ],

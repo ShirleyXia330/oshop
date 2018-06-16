@@ -21,10 +21,6 @@ export class AuthService {
     this.user$ = afAuth.authState; //This pipe will automatically unsubscribe from the Observable.
   }
 
-  get isUserLoggedIn(): boolean {
-    return (this.authState == null);
-  }
-
   googleLogin() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);

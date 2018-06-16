@@ -1,6 +1,12 @@
 <div *ngIf="product.title" class="card">
-  <img *ngIf="product.imageUrl" class="card-img-top" 
-    [src]="product.imageUrl" alt="{{ product.title }}">
+  <!-- <a *ngIf="ishomePage; else invalidLink" routerLink=""> -->
+    <img *ngIf="product.imageUrl" class="card-img-top" 
+      [src]="product.imageUrl" alt="{{ product.title }}">
+  <!-- </a>
+  <ng-template #invalidLink>
+      <img *ngIf="product.imageUrl" class="card-img-top" 
+        [src]="product.imageUrl" alt="{{ product.title }}">
+  </ng-template> -->
   <div class="card-body">
     <h5 class="card-title">{{ product.title }}</h5>
     <p class="card-text">{{ product.price | currency:'AUD':'symbol' }}</p>
