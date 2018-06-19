@@ -11,7 +11,9 @@ import { OrderModalComponent } from 'shared/components/order-modal/order-modal.c
 export class AdminOrdersComponent {
   orders$;
 
-  constructor(private orderService: OrderService, private dialog: MatDialog) { 
+  constructor(private orderService: OrderService, private dialog: MatDialog) {
+    this.dialog.closeAll();
+    
     this.orders$ = this.orderService.getOrders();
   }
 

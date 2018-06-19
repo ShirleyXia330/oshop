@@ -6,6 +6,11 @@
     padding: 0;
 }
 
-div a div {
-    color: black
+.isLink {
+    cursor: pointer;
 }
+
+.isLink:hover {
+    box-shadow: 10px 2px 15px 0 rgba(0, 0, 0, 0.2), 4px 4px 20px 0 rgba(0, 0, 0, 0.1);
+}
+

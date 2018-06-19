@@ -16,6 +16,8 @@ export class MyOrdersComponent {
     private authService: AuthService,
     private orderService: OrderService,
     private dialog: MatDialog) {
+      this.dialog.closeAll();
+
       this.order$ = authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
   }
 

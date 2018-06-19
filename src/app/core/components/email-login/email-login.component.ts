@@ -20,9 +20,7 @@ export class EmailLoginComponent{
     private authService: AuthService,
     private router: Router,
     private db: AngularFireDatabase,
-    private dialogRef: MatDialog) {
-      this.email = "test";
-    }
+    private dialogRef: MatDialog) {}
 
   register() {
     this.formError = "";

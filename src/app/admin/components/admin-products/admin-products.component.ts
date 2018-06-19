@@ -3,6 +3,7 @@ import { ProductService } from 'shared/services/product.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Product } from 'shared/models/product';
 import { DataTableResource } from 'angular5-data-table';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-admin-products',
@@ -22,7 +23,9 @@ export class AdminProductsComponent implements OnDestroy {
     this.tableResource.count().then(count => this.itemCount = count);
   }
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,private dialogRef: MatDialog) {
+    this.dialogRef.closeAll();
+
     this.subscription = this.productService.getAll()
       .subscribe(products => {
         this.products = products;

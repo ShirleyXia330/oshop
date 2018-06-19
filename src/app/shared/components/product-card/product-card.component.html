@@ -1,14 +1,15 @@
-<div *ngIf="product.title" class="card">
-    <!-- *ngIf="viewProduct; else invalidLink" -->
-  <a *ngIf="viewProduct; else invalidLink" [routerLink]="['/products/',product.$key]">
-      <img *ngIf="product.imageUrl" class="card-img-top" 
-      [src]="product.imageUrl" alt="{{ product.title }}">
-      <div class="card-body">
-        <h5 class="card-title">{{ product.title }}</h5>
-        <p class="card-text">{{ product.price | currency:'AUD':'symbol' }}</p>
-      </div>
-  </a>
-  <ng-template #invalidLink>
+<div *ngIf="product">
+  <div *ngIf="product.title" class="card">
+    <!-- [routerLink]="['/products/', product.$key]" -->
+  <div *ngIf="viewProduct; else invalidLink" (click)="view()" class="isLink">
+    <img *ngIf="product.imageUrl" class="card-img-top" 
+    [src]="product.imageUrl" alt="{{ product.title }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text">{{ product.price | currency:'AUD':'symbol' }}</p>
+    </div>
+  </div>
+  <ng-template #invalidLink class="isLink">
       <img *ngIf="product.imageUrl" class="card-img-top" 
         [src]="product.imageUrl" alt="{{ product.title }}">
       <div class="card-body">
@@ -30,4 +31,5 @@
         </product-quantity>
       </ng-template>
   </div>
+</div>
 </div>

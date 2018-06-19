@@ -10,7 +10,7 @@ import { Order } from 'shared/models/order';
 export class OrderModalComponent {
   order: Order;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
     this.order = data;
   }
 }

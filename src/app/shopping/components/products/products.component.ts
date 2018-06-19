@@ -7,6 +7,8 @@ import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
 import { ShoppingCart } from 'shared/models/shopping-cart';
+import { MatDialog } from '@angular/material';
+
 
 @Component({
   selector: 'app-products',
@@ -23,9 +25,12 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private shoppingCartService: ShoppingCartService) { }
+    private shoppingCartService: ShoppingCartService,
+    private dialogRef: MatDialog) { }
 
   async ngOnInit() {
+    this.dialogRef.closeAll();
+
     this.cart$ = await this.shoppingCartService.getCart();
     this.populateProducts();
   }
@@ -46,7 +51,5 @@ export class ProductsComponent implements OnInit {
     this.filteredProducts = (this.category) ?
       this.products.filter(p => p.category === this.category) :
       this.products;
-      console.log(this.filteredProducts);
-
   }
 }

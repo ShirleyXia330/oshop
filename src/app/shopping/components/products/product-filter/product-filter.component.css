@@ -1,3 +1,4 @@
-.sticky-top {
+.left-top {
+    position: sticky;
     top: 80px;
 }
