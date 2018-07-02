@@ -1,26 +1,24 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-  <div class="container">
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
     <a class="navbar-brand" routerLink="/">
       <i class="fa fa-leaf" aria-hidden="true"></i>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+    <a class="nav-link mr-auto" routerLink="/shopping-cart">
+      <i class="fa fa-shopping-cart fa-lg" color=""></i>
+      <span *ngIf="cart$ | async as cart " class="badge badge-warning badge-pill">
+        {{ cart.totalItemsCount }}
+      </span>
+    </a>
+
+    <button (click)="toggleMenu()" class="navbar-toggler" type="button" data-toggle="collapse" 
       data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div class="collapse navbar-collapse" [class.show]="showMenu" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/shopping-cart">
-            <i class="fa fa-shopping-cart fa-lg" color=""></i>
-            <span *ngIf="cart$ | async as cart " class="badge badge-warning badge-pill">
-              {{ cart.totalItemsCount }}
-            </span>
-          </a>
-        </li>
       </ul>
-      <ul class="navbar-nav">
+      <ul class="nav navbar-nav">
         <ng-template #anonymousUser>
           <li class="nav-item">
             <a class="nav-link" routerLink="/login">Login</a>
@@ -41,10 +39,5 @@
           </div>
         </li>
       </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
     </div>
-  </div>
 </nav>

@@ -1,8 +1,9 @@
+import 'rxjs/add/operator/take';
+
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'shared/services/category.service';
 import { ProductService } from 'shared/services/product.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-product-form',
@@ -11,7 +12,12 @@ import 'rxjs/add/operator/take';
 })
 export class ProductFormComponent {
   categories$;
-  product = {};
+  product = {
+    title: "",
+    price: 0,
+    category: "",
+    imageUrl: "",
+    description: ""};
   id;
 
   constructor(

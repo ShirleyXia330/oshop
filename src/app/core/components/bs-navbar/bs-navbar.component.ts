@@ -14,6 +14,7 @@ export class BsNavbarComponent implements OnInit{
   appUser: AppUser;
   // shoppingCartItemCount: number;
   cart$: Observable<ShoppingCart>;
+  showMenu = false;
 
   constructor(private auth: AuthService,private shoppingCartService: ShoppingCartService) {
   }
@@ -28,4 +29,7 @@ export class BsNavbarComponent implements OnInit{
     this.auth.logout();
   }
 
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
 }
